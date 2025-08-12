@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Axiom Dashboard</title>
+  <link rel="icon" href="logo-light.png" type="image/png" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', 'Roboto', sans-serif;
+      background: url("Axiombx1.png") no-repeat center center fixed;
+      background-size: cover;
+      color: #222;
+    }
+
+    header {      background: url("header11.jpg") no-repeat center/cover;             
+      height: 600px;
+      text-align: center;
+      padding-top: 3em;
+      position: relative;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+      color: white;
+      animation: floatHeader 10s ease-in-out infinite;
+    }
+
+    @keyframes floatHeader {
+      0% { background-position: center top; }
+      50% { background-position: center bottom; }
+      100% { background-position: center top; }
+    }
+
+    header img {
+      max-width: 100px;
+      margin-bottom: 10px;
+    }
+    header h1 {
+  font-size: 4em;
+  font-weight: bold;
+  margin: 0.5em 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.gold-text {
+  color: #C5A253; 
+}
+
+.green-text {
+  color: #134E1F; 
+}
+
+
+    header p {
+  font-size: 2.1em;
+  color: #444;
+  font-style: italic;
+}
+
+
+    .menu-icon {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    .menu-icon div {
+      width: 30px;
+      height: 4px;
+      background-color: #006400;
+      margin: 5px 0;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: -220px;
+      width: 220px;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.97);
+      display: flex;
+      flex-direction: column;
+      padding-top: 60px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+      transition: left 0.3s ease;
+      z-index: 90;
+    }
+
+    nav.active {
+      left: 0;
+    }
+
+    nav a, nav form button {
+      color: #134e1f;
+      text-decoration: none;
+      padding: 15px 20px;
+      font-weight: 500;
+      font-size: 1em;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.3s;
+    }
+
+    nav a:hover, nav form button:hover {
+      background: rgba(0,0,0,0.05);
+    }
+
+    .profile-tab {
+      background: rgba(255,255,255,0.9);
+      padding: 1em;
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+      color: #006400;
+      font-weight: 500;
+    }
+
+
+  .tiles {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2em;
+  padding: 3em 2em;
+  font-family: 'Segoe UI', sans-serif;
+  background: rgba(255, 255, 255, 0.05);
+ }
+
+
+ .tile {
+  flex: 1 1 300px;
+  max-width: 320px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 1.5em;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+ }
+
+ .tile:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+ }
+
+.tile h3 {
+  font-size: 1.5em;
+  margin-bottom: 0.2em;
+  font-weight: 700;
+ }
+ 
+ .tile h4 {
+  font-size: 1.1em;
+  margin-bottom: 1em;
+  color: #333;
+  font-weight: 600;
+ }
+
+ .tile img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-top: 0.5em;
+ }
+
+
+  .team-section .tile {
+  max-width: 250px;
+  padding: 1em;
+  height: auto;
+ }
+ 
+team-wrapper {
+    margin-top: 3em;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 2em 1em;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    overflow: hidden;
+  }
+
+  .team-wrapper h2 {
+    text-align: center;
+    color: #134e1f;
+    font-size: 2em;
+    margin-bottom: 1.5em;
+  }
+
+  .team-slider {
+    display: flex;
+    gap: 2em;
+    animation: slide 40s linear infinite;
+    width: max-content;
+  }
+
+  @keyframes slide {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  
+
+  }
+
+  .team-container {
+    overflow: hidden;
+  }
+
+  .tile {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(4px);
+    border-radius: 15px;
+    text-align: center;
+    padding: 1em;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 250px;
+    transition: transform 0.3s ease;
+  }
+
+  .tile:hover {
+    transform: scale(1.04);
+  }
+
+  .tile-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1em;
+  }
+
+  .tile h3 {
+    color: #134e1f;
+    font-size: 1.2em;
+    margin: 0.5em 0 0.3em;
+  }
+
+  .tile p {
+    color: #333;
+    font-size: 1em;
+    margin: 0;
+  }
+
+   .button {
+      display: inline-block;
+      background-color: #006400;
+      color: #fff;
+      padding: 0.5em 1em;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 0.9em;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin: 5px 0;
+    }
+
+    .button:hover {
+      background-color: #148d30;
+      transform: scale(1.05);
+    }
+
+    footer {
+      background: rgba(230, 240, 230, 0.9);
+      text-align: center;
+      padding: 1.5em;
+      margin-top: 3em;
+      color: #134e1f;
+    }
+
+    .material-section h4 {
+      margin-bottom: 0.5em;
+      color: #006400;
+    }
+    .course-section {
+  padding: 4em 2em;
+  background-color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+}
+
+.course-section h4 {
+  color: #134e1f;
+  font-size: 1.8em;
+  margin-bottom: 0.3em;
+}
+
+.course-section p {
+  font-size: 0.95em;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: #444;
+  max-width: 700px;
+  margin: auto;
+}
+
+.course-table {
+  width: 90%;
+  margin: 2em auto 0 auto;
+  border-collapse: collapse;
+}
+
+.course-table th {
+  background-color: #134e1f;
+  color: white;
+  padding: 0.8em;
+  text-align: left;
+  font-size: 1em;
+}
+
+.course-table td {
+  padding: 0.8em;
+  border-bottom: 1px solid rgba(0,0,0,0.1); 
+  text-align: left;
+}
+  
+.course-table tr:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.button {
+  background-color: #134e1f;
+  color: white;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background-color: #0f3c18;
+}
+
+  </style>
+</head>
+<body>
+
+<div class="menu-icon" onclick="toggleMenu()">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+<nav id="navbar">
+  <a href="axiom4.html">Home</a>
+  <a href="#training_material">Training Materials</a>
+  <a href="#team-wrapper">Our Team</a>
+  <form action="logout.php" method="POST">
+    <button type="submit">Logout</button>
+  </form>
+</nav>
+
+
+<header>
+  <img src="logo-light.png" alt="Axiom Logo">
+  <h1>
+    <span class="green-text">Axiom</span> 
+    <span class="gold-text">Leadership</span>
+    <span class="green-text">Masterclass</span>
+  </h1>
+  <p>Empowering Growth & Excellence</p>
+</header>
+
+  <section class="tiles">
+  <div class="tile">
+    <h2 style="color:  #0d3eaf;">WHY</h2>
+    <h4>Purpose</h4>
+    <img src="purpose3.jpg" alt="Purpose Image">
+  </div>
+  <div class="tile">
+    <h2 style="color:  #007b29;">HOW</h2>
+    <h4>Strategy</h4>
+    <img src="strategy3.jpg" alt="Strategy Image">
+  </div>
+  <div class="tile">
+    <h2 style="color:  #990c0c;">HOW</h2>
+    <h4>Execution</h4>
+    <img src="execution3.jpg" alt="Execution Image">
+  </div>
+</section>
+
+</section>
+
+ <section class="about-section" style="margin-top: 3em; display: flex; flex-wrap: wrap; background: rgba(255, 255, 255, 0.3); border-radius: 20px; padding: 2em; gap: 2em;"> 
+  
+  <div style="flex: 1 1 300px; min-width: 280px;">
+    <h2 style="color: #134e1f;">Empowering your success through Purpose, Strategy, and Execution.</h2>
+    
+    <p>
+      <strong>Why We Exist – Purpose:</strong> At Axiom Group, everything starts with a clear and compelling purpose: to build trust, shape perception, and drive transformation through world-class communication. We exist to help brands and institutions navigate complexity with clarity and confidence.
+    </p>
+    
+    <p>
+      <strong>What We Stand For – Values:</strong> Our values reflect what truly matters to us: Integrity, Excellence, Innovation, Collaboration, and Impact. These are not just words—they are the heartbeat of every client engagement and campaign we deliver.
+    </p>
+    
+    <p>
+      <strong>Where We’re Going – Vision:</strong> Our vision is bold yet grounded: to be the most trusted strategic communications partner in Uganda and beyond. We are driven to elevate brands, influence policy, and lead conversations that matter.
+    </p>
+    
+    <p>
+      <strong>How We’ll Get There – Strategy:</strong> We bridge the gap between vision and action by aligning our mission with clear drivers and powerful enablers. Whether it’s through tailored messaging, stakeholder engagement, or strategic positioning, we connect insight with impact.
+    </p>
+    
+    <p>
+      <strong>How We Deliver – Execution:</strong> Our execution is intentional and measurable. We set focused initiatives, track performance indicators, and communicate strategy through transparent mapping. Every move is aligned to ensure relevance, results, and resonance.
+    </p>
+  </div>
+
+   <style>
+  .axiom-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+    font-size: 0.95em;
+  }
+
+  .axiom-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .axiom-feature-icon {
+    width: 75px;
+    height: 75px;
+    background: white;
+    color: #134e1f;
+    border-radius: 50%;
+    font-weight: light;
+    font-size: 1.75em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .axiom-feature-icon:hover {
+    background: #134e1f;
+    color: white;
+  }
+
+ 
+</style>
+
+<div style="flex: 1 1 350px; min-width: 300px; background: rgba(255, 255, 255, 0.5); padding: 1em 1.5em; border-radius: 15px;">
+  <h3 style="color: #134e1f;">Why Partner with Axiom Group?</h3>
+  <div class="axiom-features">
+    
+    <div class="axiom-feature">
+      <div class="axiom-feature-icon">I</div>
+      <div>
+        <strong>Purpose-Driven</strong>
+        <p></p>
+      </div>
+    </div>
+
+    <div class="axiom-feature">
+      <div class="axiom-feature-icon">II</div>
+      <div>
+        <strong>Strategy-Led</strong>
+        <p></p>
+      </div>
+    </div>
+
+    <div class="axiom-feature">
+      <div class="axiom-feature-icon">III</div>
+      <div>
+        <strong>Execution-Focused</strong>
+        <p></p>
+      </div>
+    </div>
+
+    <div class="axiom-feature">
+      <div class="axiom-feature-icon">IV</div>
+      <div>
+        <strong>Trusted by Leaders</strong>
+        <p></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+</section>
+
+<section id="training_material" class="course-section">
+  <h4>📚 Latest Training Materials</h4>
+  <p>Enroll and track progress in your learning journey.</p>
+
+  <table class="course-table">
+    <thead>
+      <tr>
+        <th>Course</th>
+        <th>Description</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Why We Exist </td>
+        <td>– Purpose.Everything we do begins with your 'why'</td>
+        <td><a href="http://localhost/Axiom/material.php" target="_blank" class="button">View / Download</a></td>
+      </tr>
+      <tr>
+        <td>How We’ll Get There</td>
+        <td>-Strategy</td>
+        <td><a href="http://localhost/Axiom/material.php" target="_blank" class="button">View / Download</a></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+  
+  <div> 
+<section id="team-wrapper">
+    <h2 style="color: #134e1f; text-align:center; font-size: 2.5em;">Our Team</h2>
+  <div class="team-container">
+    <div class="team-slider">
+      
+      <div class="tile">
+        <img src="Esteri.jpg" class="tile-img" alt="Esteri Mugurwa">
+        <h3>Esteri Mugurwa</h3>
+        <p>Managing Partner</p>
+      </div>
+      <div class="tile">
+        <img src="Brenda.jpg" class="tile-img" alt="Brenda Mugasha">
+        <h3>Brenda Mugasha</h3>
+        <p>Managing Director</p>
+      </div>
+      <div class="tile">
+        <img src="Jean.jpg" class="tile-img" alt="Jean Kuhirwa">
+        <h3>Jean Kuhirwa</h3>
+        <p>Chief Operations Officer(COO)</p>
+      </div>
+      <div class="tile">
+        <img src="Sandra.jpg" class="tile-img" alt="Sandra Tracey Asiimwe">
+        <h3>Sandra Tracey Asiimwe</h3>
+        <p>Leadership Trainer</p>
+      </div>
+      
+      <div class="tile">
+        <img src="Emma.jpg" class="tile-img" alt="Emma Obonyo">
+        <h3>Emma Obonyo</h3>
+        <p>Office Administration Officer</p>
+      </div>
+      
+      <div class="tile">
+        <img src="Anthonyyy.jpg" class="tile-img" alt="Anthony Rusoke">
+        <h3>Anthony Rusoke</h3>
+        <p>IT Support Technician</p>
+      </div>
+      <div class="tile">
+        <img src="Agnes.jpg" class="tile-img" alt="Agnes Omolo">
+        <h3>Agnes Omolo</h3>
+        <p>Receptionist</p>
+      </div>
+    
+
+      
+      <div class="tile">
+        <img src="Esteri.jpg" class="tile-img" alt="Esteri Mugurwa">
+        <h3>Esteri Mugurwa</h3>
+        <p>Partenering Director</p>
+      </div>
+      <div class="tile">
+        <img src="Brenda.jpg" class="tile-img" alt="Brenda Mugasha">
+        <h3>Brenda Mugasha</h3>
+        <p>Managing Director</p>
+      </div>
+      <div class="tile">
+        <img src="Jean.jpg" class="tile-img" alt="Jean Kuhirwa">
+        <h3>Jean Kuhirwa</h3>
+        <p>Chief Operations Officer(COO)</p>
+      </div>
+      <button class="scroll-btn left" onclick="scrollTeam(-300)">&#10094;</button>
+  <button class="scroll-btn right" onclick="scrollTeam(300)">&#10095;</button>
+
+    </div>
+  </div>
+
+  </div>
+<style>
+  footer {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 2em 1em;
+    text-align: center;
+    color: #ffffff;
+    font-size: 1em;
+    margin-top: 4em;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .footer-container {
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .footer-contact {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em;
+    margin-bottom: 1em;
+  }
+
+  .footer-contact div {
+    flex: 1 1 200px;
+    color: #f1f1f1;
+  }
+
+  .footer-contact div i {
+    margin-right: 8px;
+    color: #00ff99;
+  }
+
+  .footer-bottom {
+    font-size: 0.9em;
+    color: #ccc;
+    margin-top: 1em;
+  }
+
+  @media (max-width: 600px) {
+    .footer-contact {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+</style>
+<style>
+  footer {
+    position: relative;
+    background: url('depsit.jpg') no-repeat center center/cover;
+    color: white;
+    padding-top: 5em;
+    padding-bottom: 3em;
+    clip-path: polygon(0 8%, 50% 0, 100% 8%, 100% 100%, 0% 100%);
+    text-align: center;
+    margin-top: 5em;
+  }
+
+  .footer-glass {
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 3em 1em;
+    max-width: 1000px;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .footer-contact {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em;
+    font-size: 1.2em;
+    font-weight: 400;
+    margin-bottom: 1.5em;
+  }
+
+  .footer-contact div {
+    flex: 1 1 200px;
+    color: #f8f8f8;
+  }
+
+  .footer-contact div i {
+    margin-right: 10px;
+    color: #00ffcc;
+  }
+
+  .social-icons {
+    margin: 1.5em 0;
+  }
+
+  .social-icons a {
+    color: #fff;
+    margin: 0 15px;
+    font-size: 1.5em;
+    transition: color 0.3s;
+  }
+
+  .social-icons a:hover {
+    color: #00ffcc;
+  }
+
+  .footer-bottom {
+    font-size: 0.95em;
+    color: #ddd;
+    margin-top: 1.5em;
+  }
+
+  @media (max-width: 600px) {
+    .footer-contact {
+      flex-direction: column;
+      text-align: center;
+    }
+    .social-icons a {
+      margin: 10px;
+    }
+  }
+</style>
+
+<footer>
+  <div class="footer-glass">
+    <div class="footer-contact">
+      <div><i class="fa fa-envelope"></i> info@axiomgroup.ug</div>
+      <div><i class="fa fa-phone"></i> +256 20 0900716</div>
+      <div><i class="fa fa-map-marker-alt"></i> 78 Luthuli Avenue, Union House, 3rd Floor, Bugolobi</div>
+    </div>
+
+    <div class="social-icons">
+      <a href="https://twitter.com/axiomgroupug" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.linkedin.com/company/axiom-group-uganda" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://wa.me/256200900716" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2025 Axiom Group Uganda. All rights reserved.
+    </div>
+  </div>
+</footer>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script>
+  function toggleMenu() {
+    document.getElementById('navbar').classList.toggle('active');
+  }
+</script>
+
+</body>
+</html>
